@@ -1,4 +1,3 @@
-
 import controller from '../controllers/todo';
 
 const selected = (hash, curr) => hash === curr ? 'selected' : '';

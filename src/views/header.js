@@ -1,4 +1,3 @@
-
 import controller from '../controllers/todo';
 
 export default (render, todos) => render`

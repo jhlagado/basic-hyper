@@ -1,4 +1,3 @@
-
 const name = 'todos-hyperHTML';
 
 export default {

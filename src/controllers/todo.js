@@ -1,4 +1,3 @@
-
 import Todo from '../models/todo';
 
 const controller = {
