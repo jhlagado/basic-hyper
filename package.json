@@ -10,10 +10,10 @@
   },
   "keywords": [
     "parcel",
-    "react"
+    "hyperhtml"
   ],
-  "author": "Saigowthamr",
-  "license": "ISC",
+  "author": "John Hardy",
+  "license": "MIT",
   "dependencies": {
     "hyperhtml": "^2.13.0",
     "jest": "^23.4.2",
