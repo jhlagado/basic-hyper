@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel index.html --open",
     "build": "rimraf dist && parcel build index.html",
-    "test": "jest --watch"
+    "test": "jest --env=node --colors --coverage test --watch"
   },
   "keywords": [
     "parcel",
@@ -29,5 +29,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "parcel-bundler": "^1.9.7",
     "rimraf": "^2.6.2"
+  },
+  "jest": {
   }
 }
