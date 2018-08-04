@@ -1,12 +1,13 @@
-import Todo from '../models/todo';
+import { Todo } from '../models/todo';
 
 const controller = {
 
 	ENTER_KEY: 13,
 	ESC_KEY: 27,
 
-	init(storage, update) {
+	init(window, storage, update) {
 
+		this.window = window;
 		this.items = storage.get();
 
 		this.update = () => {
@@ -23,7 +24,7 @@ const controller = {
 			storage.set(this.items);
 		};
 
-		window.onhashchange = this.update;
+		this.window.onhashchange = this.update;
 	},
 
 	// controller actions invoked through the DOM
@@ -74,7 +75,7 @@ const controller = {
 	},
 
 	hash: () => {
-		const str = window.location.hash.slice(2);
+		const str = controller.window.location.hash.slice(2);
 		return str !== 'completed' && str !== 'active' ? 'all' : str;
 	},
 

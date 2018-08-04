@@ -1,7 +1,6 @@
-import hyperHTML from 'hyperhtml';
 import controller from '../controllers/todo';
 
-export default (render, todos) => render`
+export default (hyper, todos) => hyper()`
 	<section class="main" style="${todos.length ? '' : 'display:none'}">
 		<input
 			class="toggle-all"
@@ -9,7 +8,7 @@ export default (render, todos) => render`
 			onclick="${controller.toggleAll}"
 			checked="${todos.every(todo => todo.completed)}">
 		<label for="toggle-all">Mark all as complete</label>
-		<ul class="todo-list">${todos.map(todo => hyperHTML.wire(todo)`
+		<ul class="todo-list">${todos.map(todo => hyper(todo)`
 			<li
 				data-index="${controller.items.indexOf(todo)}"
 				class="${todo.completed ? 'completed' : ''}"

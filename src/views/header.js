@@ -1,6 +1,6 @@
 import controller from '../controllers/todo';
 
-export default (render, todos) => render`
+export default (hyper, todos) => hyper()`
 	<header class="header">
 		<h1>todos</h1>
 		<input

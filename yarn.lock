@@ -27,6 +27,10 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
+"@webreflection/interface@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@webreflection/interface/-/interface-0.1.1.tgz#af2a91daf38179656072a6f92e9f9211658f8566"
+
 abab@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -916,6 +920,15 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+basichtml@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/basichtml/-/basichtml-0.16.1.tgz#cf3ad8a3dfe9958cec3c44bec9f0d6cb14992854"
+  dependencies:
+    "@webreflection/interface" "^0.1.1"
+    broadcast "^2.0.2"
+    html-escaper "^1.0.1"
+    htmlparser2 "^3.9.2"
+
 bcrypt-pbkdf@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.2.tgz#a4301d389b6a43f9b67ff3ca11a3f6637e360e9e"
@@ -980,6 +993,10 @@ brfs@^1.2.0:
     resolve "^1.1.5"
     static-module "^2.2.0"
     through2 "^2.0.0"
+
+broadcast@^2.0.2:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/broadcast/-/broadcast-2.0.4.tgz#a50ca11ddef113713253a0b7f3ad9768f43e1604"
 
 brorand@^1.0.1:
   version "1.1.0"
@@ -2488,6 +2505,10 @@ html-encoding-sniffer@^1.0.2:
   resolved "https://registry.yarnpkg.com/html-encoding-sniffer/-/html-encoding-sniffer-1.0.2.tgz#e70d84b94da53aa375e11fe3a351be6642ca46f8"
   dependencies:
     whatwg-encoding "^1.0.1"
+
+html-escaper@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/html-escaper/-/html-escaper-1.0.1.tgz#ee029e2862674017941355a7f61fc2c7c0a6fd72"
 
 htmlnano@^0.1.9:
   version "0.1.9"
