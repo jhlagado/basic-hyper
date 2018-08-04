@@ -1,69 +1,66 @@
 import { Todo } from '../models/todo';
 
-const controller = {
+export const ENTER_KEY = 13;
+export const ESC_KEY = 27;
 
-	ENTER_KEY: 13,
-	ESC_KEY: 27,
+export const initController = (window, storage, updateFunc) => {
 
-	init(window, storage, update) {
+	let items = storage.get();
 
-		this.window = window;
-		this.items = storage.get();
+	const update = () => {
+		const h = hash();
+		let todos = items;
+		if (h !== 'all') {
+			todos = todos.filter(
+				h === 'active' ?
+					todo => !todo.completed :
+					todo => todo.completed
+			);
+		}
+		updateFunc(todos);
+		storage.set(items);
+	};
+	window.onhashchange = update;
 
-		this.update = () => {
-			const hash = controller.hash();
-			let todos = this.items;
-			if (hash !== 'all') {
-				todos = todos.filter(
-					hash === 'active' ?
-						todo => !todo.completed :
-						todo => todo.completed
-					);
-			}
-			update(todos);
-			storage.set(this.items);
-		};
-
-		this.window.onhashchange = this.update;
-	},
+	const getItems = () => items;
 
 	// controller actions invoked through the DOM
 
-	clear: () => {
-		controller.items = controller.items.filter(todo => !todo.completed);
-		controller.update();
-	},
+	const clear = () => {
+		items = items.filter(todo => !todo.completed);
+		update();
+	}
 
-	complete: event => {
+	const complete = event => {
 		const index = event.target.closest('li').dataset.index;
-		const todo = controller.items[index];
+		const todo = items[index];
 		todo.completed = !todo.completed;
-		controller.update();
-	},
+		update();
+	}
 
-	create: event => {
+	const create = event => {
 		const target = event.target;
 		const value = target.value.trim();
-		if (event.keyCode === controller.ENTER_KEY && value.length) {
-			controller.items.push(Todo(value));
+		if (event.keyCode === ENTER_KEY && value.length) {
+			items.push(Todo(value));
 			target.value = '';
-			controller.update();
+			update();
 		}
-	},
+	}
 
-	destroy: event => {
+	const destroy = event => {
 		const index = event.target.closest('li').dataset.index;
-		controller.items.splice(index, 1);
-		controller.update();
-	},
+		items.splice(index, 1);
+		update();
+	}
 
-	edit: event => {
-		if (event.type === 'blur' || event.keyCode === controller.ENTER_KEY) {
+	const edit = event => {
+		if (event.type === 'blur' || event.keyCode === ENTER_KEY) {
 			const value = event.target.value.trim();
 			if (value.length) {
 				const index = event.target.closest('li').dataset.index;
-				controller.items[index].title = value;
-				controller.update();
+				items[index].title = value;
+				update();
 			} else {
 				if (event.type === 'blur') {
 					controller.destroy(event);
@@ -72,23 +69,36 @@ const controller = {
 				}
 			}
 		}
-	},
+	}
 
-	hash: () => {
-		const str = controller.window.location.hash.slice(2);
+	const hash = () => {
+		const str = window.location.hash.slice(2);
 		return str !== 'completed' && str !== 'active' ? 'all' : str;
-	},
+	}
 
-	todosLeft: () => controller.items.filter(todo => !todo.completed).length,
+	const todosLeft = () => items.filter(todo => !todo.completed).length;
 
-	todosSize: () => controller.items.length,
+	const todosSize = () => items.length;
 
-	toggleAll: (event) => {
-		controller.items.forEach(todo => {
+	const toggleAll = (event) => {
+		items.forEach(todo => {
 			todo.completed = event.target.checked;
 		});
-		controller.update();
+		update();
 	}
-};
 
-export default controller;
+	return {
+		getItems,
+		clear,
+		complete,
+		create,
+		destroy,
+		edit,
+		hash,
+		todosLeft,
+		todosSize,
+		toggleAll,
+		update
+	}
+
+}

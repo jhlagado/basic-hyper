@@ -1,11 +1,9 @@
-import controller from '../controllers/todo';
-
 export const selectIfMatch = (hash, curr) => hash === curr ? 'selected' : '';
 export const showIfSomeTodos = length => length > 0 ? '' : 'display: none';
 export const pluralize = length => length >= 2 ? 's' : '';
 export const showIfSomeComplete = (numTodosIncomplete, numTodos) => numTodosIncomplete < numTodos ? '' : 'display: none'
 
-export default (hyper, todos) => {
+export default (controller, hyper) => {
 
 	const numTodos = controller.todosSize();
 	const numTodosIncomplete = controller.todosLeft();
