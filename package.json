@@ -32,6 +32,7 @@
     "rimraf": "^2.6.2"
   },
   "jest": {
+    "testMatch": ["**/?(*.)+(spec|test).js"],
     "transformIgnorePatterns":[
       "./node_modules/todomvc-common/base.css"
     ]
