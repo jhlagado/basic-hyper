@@ -3,3 +3,15 @@ node_js:
   - 'stable'
 script:
   - yarn test-travis
+before_script:
+  - npm prune
+after_success:
+  - npm run build
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
