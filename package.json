@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel index.html --open",
     "build": "rimraf dist && parcel build index.html",
-    "test": "jest --env=node --colors --coverage test --watch"
+    "test": "jest --env=node --colors --coverage spec --watch",
+    "test-travis": "jest --env=node --colors --coverage spec"
   },
   "keywords": [
     "parcel",
@@ -30,5 +31,10 @@
     "jest": "^23.4.2",
     "parcel-bundler": "^1.9.7",
     "rimraf": "^2.6.2"
+  },
+  "jest": {
+    "transformIgnorePatterns":[
+      "./node_modules/todomvc-common/base.css"
+    ]
   }
 }
