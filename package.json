@@ -34,7 +34,9 @@
   },
   "jest": {
     "transformIgnorePatterns":[
-      "./node_modules/todomvc-common/base.css"
+      "./node_modules/todomvc-common/base.css",
+      "./node_modules/todomvc-app-css/index.css"
+
     ]
   }
 }

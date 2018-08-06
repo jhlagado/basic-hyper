@@ -1,5 +1,4 @@
 import { Document } from 'basichtml';
-// Array.prototype.contains = Array.prototype.includes; //polyfill node
 
 global.document = new Document();
 const hyper = require('hyperhtml').hyper;
