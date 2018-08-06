@@ -1,28 +1,28 @@
+export const selectIfMatch = (hash, curr) => hash === curr ? 'selected' : '';
+export const showIfSomeTodos = length => length > 0 ? '' : 'display: none';
+export const pluralize = length => length >= 2 ? 's' : '';
+export const showIfSomeComplete = (numTodosIncomplete, numTodos) => numTodosIncomplete < numTodos ? '' : 'display: none'
 
-import controller from '../controllers/todo';
+export default (controller, hyper) => {
 
-const selected = (hash, curr) => hash === curr ? 'selected' : '';
-
-export default (render, todos) => {
-
-	const all = controller.todosSize();
-	const left = controller.todosLeft();
+	const numTodos = controller.todosSize();
+	const numTodosIncomplete = controller.todosLeft();
 	const hash = controller.hash();
 
-	return render`
-	<footer class="footer" style="${all ? '' : 'display:none'}">
+	return hyper()`
+	<footer class="footer" style="${showIfSomeTodos(numTodos)}">
 		<span class="todo-count">
-			<strong> ${left} </strong> item${~-left ? 's' : ''} left
+			<strong> ${numTodosIncomplete} </strong> item${pluralize(numTodosIncomplete)} left
 		</span>
 		<ul class="filters">
-			<li><a class="${selected(hash, 'all')}" href="#/">All</a></li>
-			<li><a class="${selected(hash, 'active')}" href="#/active">Active</a></li>
-			<li><a class="${selected(hash, 'completed')}" href="#/completed">Completed</a></li>
+			<li><a class="${selectIfMatch(hash, 'all')}" href="#/">All</a></li>
+			<li><a class="${selectIfMatch(hash, 'active')}" href="#/active">Active</a></li>
+			<li><a class="${selectIfMatch(hash, 'completed')}" href="#/completed">Completed</a></li>
 		</ul>
 		<button
 			class="clear-completed"
 			onclick="${controller.clear}"
-			style="${left < all ? '' : 'display:none'}"
+			style="${showIfSomeComplete(numTodosIncomplete, numTodos)}"
 		>Clear completed</button>
 	</footer>`;
 };

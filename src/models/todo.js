@@ -1,8 +1,9 @@
-
 let counter = 0;
 
-export default title => ({
+export const updateId = (init, counter) => init ? 0 : counter++;
+
+export const Todo = (title, init) => ({
 	title,
-	id: counter++,
+	id: updateId(init, counter),
 	completed: false
 });

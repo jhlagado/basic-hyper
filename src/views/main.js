@@ -1,7 +1,6 @@
-import hyperHTML from 'hyperhtml';
-import controller from '../controllers/todo';
+import { ESC_KEY } from '../controllers/todo';
 
-export default (render, todos) => render`
+export default (controller, hyper, todos) => hyper()`
 	<section class="main" style="${todos.length ? '' : 'display:none'}">
 		<input
 			class="toggle-all"
@@ -9,9 +8,9 @@ export default (render, todos) => render`
 			onclick="${controller.toggleAll}"
 			checked="${todos.every(todo => todo.completed)}">
 		<label for="toggle-all">Mark all as complete</label>
-		<ul class="todo-list">${todos.map(todo => hyperHTML.wire(todo)`
+		<ul class="todo-list">${todos.map(todo => hyper(todo)`
 			<li
-				data-index="${controller.items.indexOf(todo)}"
+				data-index="${controller.getItems().indexOf(todo)}"
 				class="${todo.completed ? 'completed' : ''}"
 			>
 				<div class="view">
@@ -31,7 +30,7 @@ export default (render, todos) => render`
 					onblur="${blur2Save}"
 					onkeypress="${controller.edit}"
 					onkeydown="${function escape2Reset(event) {
-						if (event.keyCode === controller.ESC_KEY) {
+						if (event.keyCode === ESC_KEY) {
 							this.value = todo.title;
 							this.blur();
 						}
