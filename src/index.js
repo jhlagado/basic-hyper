@@ -1,5 +1,5 @@
 // import { hyper } from "hyperhtml";
-// import HyperHTMLElement from "hyperhtml-element";
+
 // import { initApp } from './app.js';
 
 // import "todomvc-common/base.css";
@@ -7,23 +7,6 @@
 
 // initApp(hyper, window); 
 
-// import HyperHTMLElement from 'hyperhtml-element/esm';
-
-// console.log(HyperHTMLElement)
-
-// class CustomElement extends HyperHTMLElement {
-//     created() {
-//       this.textContent = "I'm a custom-element.";
-//     }
-// }
-
-// console.log(CustomElement)
-
-
-// CustomElement.define('custom-element');
-// import HyperHTMLElement from "./hyperhtml-element"
-
-// const _fixBabelExtend = (v) => v;
  
 class MyElement extends HTMLElement {
     connectedCallback() {
@@ -32,7 +15,6 @@ class MyElement extends HTMLElement {
 }
    
 customElements.define('my-element', MyElement);
-  
 
 class MyElement1 extends HTMLElement {
     connectedCallback() {
@@ -44,13 +26,9 @@ customElements.define('my-element1', MyElement1);
 import { MyElement2 } from './element';
 customElements.define('my-element2', MyElement2);
 
-// console.log(MyElement, MyElement1, MyElement2)
-
-import HyperHTMLElement from './hyperhtml-element';
-// import HyperHTMLElement from 'hyperhtml-element/esm';
+import HyperHTMLElement from './common/hyperhtml-element';
 
 console.log(HyperHTMLElement);
-
 
 class CustomElement extends HyperHTMLElement {
     static get observedAttributes() { return ['owner']; }
