@@ -7,7 +7,7 @@ import "todomvc-app-css/index.css";
 import { initApp } from './app.js';
 import { MyElement2 } from './element';
 
-initApp(hyper, window); 
+// initApp(hyper, window); 
  
 class MyElement extends HTMLElement {
     connectedCallback() {

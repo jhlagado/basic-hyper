@@ -16,6 +16,8 @@
   "author": "John Hardy",
   "license": "MIT",
   "dependencies": {
+    "@webcomponents/webcomponentsjs":"^2.0.4",
+    "babel-polyfill":"^6.26",
     "hyperhtml": "^2.13.0",
     "hyperhtml-element": "^2.1.1",
     "todomvc-app-css": "^2.0.0",
