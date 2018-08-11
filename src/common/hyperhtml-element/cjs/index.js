@@ -1,4 +1,7 @@
-import {Component, bind, define, hyper, wire} from 'hyperhtml/esm';
+'use strict';
+/*! (C) 2017-2018 Andrea Giammarchi - ISC Style License */
+
+const {Component, bind, define, hyper, wire} = require('hyperhtml/cjs');
 
 // utils to deal with custom elements builtin extends
 const O = Object;
@@ -271,9 +274,27 @@ class HyperHTMLElement extends HTMLElement {
     return this;
   }
 
-}; 
+};
 
-export default HyperHTMLElement;
+// exposing hyperHTML utilities
+HyperHTMLElement.Component = Component;
+HyperHTMLElement.bind = bind;
+HyperHTMLElement.intent = define;
+HyperHTMLElement.wire = wire;
+HyperHTMLElement.hyper = hyper;
+
+try {
+  if (Symbol.hasInstance) classes.push(
+    defineProperty(HyperHTMLElement, Symbol.hasInstance, {
+      enumerable: false,
+      configurable: true,
+      value(instance) {
+        return classes.some(isPrototypeOf, getPrototypeOf(instance));
+      }
+    }));
+} catch(meh) {}
+
+Object.defineProperty(exports, '__esModule', {value: true}).default = HyperHTMLElement;
 
 // ------------------------------//
 // DOMContentLoaded VS created() //

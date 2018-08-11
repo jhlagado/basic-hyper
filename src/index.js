@@ -1,9 +1,11 @@
-import { hyper } from "hyperhtml";
-
-import { initApp } from './app.js';
+import HyperHTMLElement from './common/hyperhtml-element1';
+const hyper = HyperHTMLElement.hyper;
 
 import "todomvc-common/base.css";
 import "todomvc-app-css/index.css";
+
+import { initApp } from './app.js';
+import { MyElement2 } from './element';
 
 initApp(hyper, window); 
  
@@ -22,10 +24,7 @@ class MyElement1 extends HTMLElement {
 }
 customElements.define('my-element1', MyElement1);
    
-import { MyElement2 } from './element';
 customElements.define('my-element2', MyElement2);
-
-import HyperHTMLElement from './common/hyperhtml-element';
 
 console.log(HyperHTMLElement);
 
