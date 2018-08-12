@@ -1,40 +1,53 @@
-import HyperHTMLElement from './common/hyperhtml-element1';
-const hyper = HyperHTMLElement.hyper;
+import { hyper } from 'hyperhtml';
 
 import "todomvc-common/base.css";
 import "todomvc-app-css/index.css";
 
 import { initApp } from './app.js';
-import { MyElement2 } from './element';
+// import { MyElement2 } from './element';
 
 // initApp(hyper, window); 
  
-class MyElement extends HTMLElement {
-    connectedCallback() {
-      this.textContent = 'hello';
-    }
-}
-   
-customElements.define('my-element', MyElement);
-
-class MyElement1 extends HTMLElement {
-    connectedCallback() {
-      this.textContent = 'hello1';
-    }
-}
-customElements.define('my-element1', MyElement1);
-   
-customElements.define('my-element2', MyElement2);
-
-console.log(HyperHTMLElement);
-
-class CustomElement extends HyperHTMLElement {
-    static get observedAttributes() { return ['owner']; }
-    created() { this.render(); }
-    render() {
-      this.html`
-      This is <b>${this.owner}</b>'s name-tag element.`;
-    }
+class Clock extends hyper.Component {
+  get defaultState() { return {date: new Date()}; }
+  onconnected() {
+    console.log('finally live');
   }
+  render() {
+    return this.html`
+      <div onconnected=${this} >
+        <h1>Hello, world!</h1>
+        <h2>It is ${
+          this.state.date.toLocaleTimeString()
+        }.</h2>
+      </div>`;
+  }
+}
 
-CustomElement.define('custom-element');
+const update = () => hyper(document.body.querySelector('clock'))`${new Clock}`;
+
+update();
+
+setInterval(update, 1000);
+
+class Counter extends hyper.Component {
+  get defaultState() {
+    return {css: 'font-weight:bold;padding:10px;border:1px solid #888', count: 0};
+  }
+  constructor(count = 0) {
+    super();
+    this.setState({count});
+  }
+  onclick() {
+    this.setState(prev => ({count: prev.count + 1}));
+  }
+  render() {
+    return this.html`
+      <button style=${this.state.css} onclick=${this}>
+        ${this.state.count}
+      </button>`;
+  }
+}
+
+hyper(document.body.querySelector('counter'))`${new Counter(0)}`;
+
