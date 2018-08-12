@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html --open",
+    "start": "parcel index.html --open -p 3000",
     "build": "rimraf dist && parcel build index.html",
     "test": "jest --env=node --colors --coverage spec --watch",
     "test-travis": "jest --env=node --colors --coverage spec"
