@@ -1,12 +1,4 @@
-import "todomvc-common/base.css";
-import "todomvc-app-css/index.css";
-import { initApp } from './app.js';
-
-const hyper = HyperHTMLElement.hyper;
-
-initApp(hyper, window); 
-
-console.log('============>', hyper);
+console.log('============>');
 
 class X {
     greet() {
@@ -51,3 +43,4 @@ class MySelf extends HyperHTMLElement {
     }
   }
   MyLink.define('my-link', {extends: 'a'});
+  

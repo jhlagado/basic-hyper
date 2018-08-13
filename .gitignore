@@ -1,16 +1,26 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/node_modules/
+node_modules/
+modern/node_modules/
+legacy/node_modules/
 
 # testing
-/coverage
+coverage/
+modern/coverage/
+legacy/coverage/
 
 # production
-/dist/
+dist/
+modern/dist/
+legacy/dist/
+
+# parcel
+.cache
+modern/.cache
+legacy/.cache
 
 # misc
-.cache
 .DS_Store
 .env.local
 .env.development.local

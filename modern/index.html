@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TodoMVC</title>
+  <!-- <script>
+    if (!document.documentElement.closest)
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/dom4/1.8.3/dom4.js"><' + '/script>');
+  </script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.9.1/document-register-element.js"></script>
+  <script src="https://unpkg.com/hyperhtml-element@latest/min.js"></script>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="shortcut icon" href="./favicon.ico">
+</head>
+
+<body> 
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <my-self name="John" age="100"></my-self>
+  <br>
+  <my-input value="123"></my-input>
+  <br>
+  <a is="my-link">builtin</a>
+  <section id="todoapp" class="todoapp"></section>
+  <footer class="info">
+    <p>Double-click to edit a todo</p>
+  </footer>
+  <script src="../src/index.js"></script> 
+</body>
+
+</html>

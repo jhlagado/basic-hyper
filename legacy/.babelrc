@@ -13,13 +13,6 @@
         ],
         "stage-2",
         "react"
-    ],
-
-    "plugins": [
-        "transform-custom-element-classes",
-        "transform-es2015-classes",
-        "transform-class-properties",
-        "syntax-dynamic-import"
-      ]
+    ]
 }
 
