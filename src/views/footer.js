@@ -26,3 +26,20 @@ export default (controller, hyper) => {
 		>Clear completed</button>
 	</footer>`;
 };
+
+export class MyFooter extends HyperHTMLElement {
+	static get observedAttributes() {
+		return ['numtodos', 'numincomplete', 'hash'];
+	}
+	attributeChangedCallback() {
+		this.render();
+	}
+	render() {
+		return this.html`
+			<div>num todos ${this.numtodos}</div>
+			<div>num incomplete ${this.numincomplete}</div>
+			<div>hash ${this.hash}</div>
+		`
+	}
+}
+MyFooter.define('my-footer');

@@ -2,23 +2,15 @@
 
 # dependencies
 node_modules/
-modern/node_modules/
-legacy/node_modules/
 
 # testing
 coverage/
-modern/coverage/
-legacy/coverage/
 
 # production
 dist/
-modern/dist/
-legacy/dist/
 
 # parcel
 .cache
-modern/.cache
-legacy/.cache
 
 # misc
 .DS_Store

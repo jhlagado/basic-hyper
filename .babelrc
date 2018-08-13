@@ -12,7 +12,7 @@
         ]
     ],
     "env": {
-        "production:legacy": {
+        "legacy": {
             "presets": [
                 [
                     "env",
