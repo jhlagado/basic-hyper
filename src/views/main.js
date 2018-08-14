@@ -1,4 +1,3 @@
-import {isRegistered} from '../common/register';
 import { ESC_KEY } from '../controllers/todo';
 
 export function initMyMain(controller, hyper) {
@@ -63,6 +62,6 @@ export function initMyMain(controller, hyper) {
 				</section>`
 		}
 	}
-	if (!isRegistered('my-main')) MyMain.define('my-main');
+	try { MyMain.define('my-main') } catch (e) {}
 	return MyMain;
 }

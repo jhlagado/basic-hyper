@@ -1,5 +1,3 @@
-import {isRegistered} from '../common/register';
-
 export function initMyHeader(controller) {
 
 	class MyHeader extends HyperHTMLElement {
@@ -18,6 +16,6 @@ export function initMyHeader(controller) {
 				</header>`
 		}
 	}
-	if (!isRegistered('my-header')) MyHeader.define('my-header');
+	try { MyHeader.define('my-header') } catch (e) {}
 	return MyHeader;
 }

@@ -1,5 +1,3 @@
-import {isRegistered} from '../common/register';
-
 export const selectIfMatch = (hash, curr) => hash === curr ? 'selected' : '';
 export const showIfSomeTodos = length => length > 0 ? '' : 'display: none';
 export const pluralize = length => length >= 2 ? 's' : '';
@@ -37,6 +35,6 @@ export function initMyFooter(controller) {
 				</footer>`
 		}
 	}
-	if (!isRegistered('my-footer')) MyFooter.define('my-footer');
+	try { MyFooter.define('my-footer') } catch (e) {};
 	return MyFooter;
 }
