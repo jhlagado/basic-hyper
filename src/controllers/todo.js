@@ -3,26 +3,35 @@ import { Todo } from '../models/todo';
 export const ENTER_KEY = 13;
 export const ESC_KEY = 27;
 
-export const initController = (window, storage, updateFunc) => {
+export const initController = (window, storage) => {
 
+	let updateFuncs = [];
 	let items = storage.get();
 
 	const update = () => {
-		const h = hash();
-		let todos = items;
-		if (h !== 'all') {
-			todos = todos.filter(
-				h === 'active' ?
-					todo => !todo.completed :
-					todo => todo.completed
-			);
-		}
-		updateFunc(todos);
+		for (let func of updateFuncs) {
+			func();
+		};
 		storage.set(items);
 	};
 	window.onhashchange = update;
 
+	const subscribe = func => {
+		updateFuncs.push(func);
+		return () => {updateFuncs = updateFuncs.filter(f => f != func)}
+	};	
+
 	const getItems = () => items;
+	const getFilteredItems = () => {
+		const h = hash();
+		return (h !== 'all') ?
+			items.filter(
+				h === 'active' ?
+					todo => !todo.completed :
+					todo => todo.completed
+			) :
+			items;
+	};
 
 	// controller actions invoked through the DOM
 
@@ -88,7 +97,9 @@ export const initController = (window, storage, updateFunc) => {
 	}
 
 	return {
+		subscribe,
 		getItems,
+		getFilteredItems,
 		clear,
 		complete,
 		create,

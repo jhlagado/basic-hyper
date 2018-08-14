@@ -8,7 +8,7 @@
     "test-travis": "jest --env=node --colors --coverage spec",
     "start": "npm run build1 && parcel index.html --open -p 3000",
     "build": "npm run build1 && parcel build index.html",
-    "build1": "rimraf dist && NODE_ENV=legacy parcel build index-ie.html --no-cache"
+    "build1": "rimraf dist && cross-env NODE_ENV=legacy parcel build index-ie.html --no-cache"
   },
   "keywords": [
     "parcel",
@@ -17,10 +17,6 @@
   "author": "John Hardy",
   "license": "MIT",
   "dependencies": {
-    "@webcomponents/webcomponentsjs":"^2.0.4",
-    "babel-polyfill":"^6.26",
-    "hyperhtml": "^2.13.0",
-    "hyperhtml-element": "^2.1.1",
     "todomvc-app-css": "^2.0.0",
     "todomvc-common": "^1.0.5"
   },
@@ -34,6 +30,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "basichtml": "^0.16.1",
+    "cross-env": "^5.2.0",
     "jest": "^23.4.2",
     "parcel-bundler": "^1.9.7",
     "rimraf": "^2.6.2"
@@ -44,4 +41,4 @@
       "./node_modules/todomvc-app-css/index.css"
     ]
   }
-} 
+}
