@@ -1,17 +1,15 @@
 import { initController } from './controllers/todo';
 import { initStorage } from './models/storage';
-import { initMyHeader } from './views/header';
-import { initMyMain } from './views/main';
-import { initMyFooter } from './views/footer';
+import './elements';
 
 export function initApp(hyper, window) {
 
 	const storage = initStorage(window.localStorage);
 	const controller = initController(window, storage);
 
-	initMyHeader(controller);
-	initMyMain(controller, hyper);
-	initMyFooter(controller);
+	const data = { controller, hyper };
+	const appRender = hyper(window.document.querySelector('#todoapp'));
+	appRender`<my-container data=${data}></my-container>`;
 
-	controller.update();
+	controller.update(); 
 }

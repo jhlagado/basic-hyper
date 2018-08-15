@@ -64,17 +64,18 @@ export const initController = (window, storage) => {
 	}
 
 	const edit = event => {
-		if (event.type === 'blur' || event.keyCode === ENTER_KEY) {
-			const value = event.target.value.trim();
+		const {type, keyCode, target} = event;
+		if (type === 'blur' || keyCode === ENTER_KEY) {
+			const value = target.value.trim();
 			if (value.length) {
-				const index = event.target.closest('li').dataset.index;
+				const index = target.closest('li').dataset.index;
 				items[index].title = value;
 				update();
 			} else {
-				if (event.type === 'blur') {
+				if (type === 'blur') {
 					controller.destroy(event);
 				} else {
-					event.target.blur();
+					target.blur();
 				}
 			}
 		}
@@ -89,7 +90,7 @@ export const initController = (window, storage) => {
 
 	const todosSize = () => items.length;
 
-	const toggleAll = (event) => {
+	const toggleAll = event => {
 		items.forEach(todo => {
 			todo.completed = event.target.checked;
 		});
