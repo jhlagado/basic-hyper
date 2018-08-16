@@ -2566,6 +2566,18 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
+hyperhtml-element@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/hyperhtml-element/-/hyperhtml-element-2.1.1.tgz#8f80bfd89e9c4f9177cddc8593385abd70472c3e"
+  dependencies:
+    hyperhtml "^2.13.0"
+
+hyperhtml@^2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/hyperhtml/-/hyperhtml-2.13.0.tgz#6eb43fc3dfdd0775374d0b80bb990b05aeba2213"
+  dependencies:
+    lightercollective "^0.1.0"
+
 iconv-lite@0.4.19:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
@@ -3431,6 +3443,10 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+lightercollective@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/lightercollective/-/lightercollective-0.1.0.tgz#70df102c530dcb8d0ccabfe6175a8d00d5f61300"
 
 load-json-file@^1.0.0:
   version "1.1.0"

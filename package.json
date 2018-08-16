@@ -17,6 +17,7 @@
   "author": "John Hardy",
   "license": "MIT",
   "dependencies": {
+    "hyperhtml-element": "^2.1.1",
     "todomvc-app-css": "^2.0.0",
     "todomvc-common": "^1.0.5"
   },
@@ -39,6 +40,7 @@
     "transformIgnorePatterns": [
       "./node_modules/todomvc-common/base.css",
       "./node_modules/todomvc-app-css/index.css"
-    ]
+    ],
+    "setupTestFrameworkScriptFile": "./test.setup.js"
   }
 }
