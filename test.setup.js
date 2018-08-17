@@ -1,4 +1,0 @@
-
-global.HyperHTMLElement = class HyperHTMLElement {
-
-}
