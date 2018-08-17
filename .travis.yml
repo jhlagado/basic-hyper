@@ -7,7 +7,7 @@ before_script:
   - npm prune
 after_success:
   - yarn build
-  - npm run lh -- https://jhlagado.github.io/index.html
+  - npm run lh -- https://jhlagado.github.io/basic-hyper/index.html
 cache:
   directories:
     - node_modules
