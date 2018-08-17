@@ -19,11 +19,6 @@ branches:
 env:
   - LIGHTHOUSE_API_KEY=28bb5c3a491941debf70b1471bf000ce
 
-env:
- global:
- - GH_REF: github.com/knode/node-meatspace.git
- - secure: RIbIq8hI153J5trRa........
-
 deploy:
   provider: pages
   skip-cleanup: true
