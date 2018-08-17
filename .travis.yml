@@ -6,7 +6,8 @@ script:
 before_script:
   - npm prune
 after_success:
-  - npm run build
+  - yarn build
+  - npm run lh -- https://jhlagado.github.io/index.html
 cache:
   directories:
     - node_modules
@@ -15,3 +16,12 @@ notifications:
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+env:
+  - LIGHTHOUSE_API_KEY=28bb5c3a491941debf70b1471bf000ce
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: 0318b6d8a31c2e2f432dd6598c0609570d59e606  
+  keep-history: true
+  on:
+    branch: develop
