@@ -1,27 +1,29 @@
 language: node_js
 node_js:
-  - 'stable'
+- stable
 script:
-  - yarn test-travis
+- yarn test-travis
 before_script:
-  - npm prune
+- npm prune
 after_success:
-  - yarn build
-  - npm run lh -- https://jhlagado.github.io/index.html
+- yarn build
+- npm run lh -- https://jhlagado.github.io/index.html
 cache:
   directories:
-    - node_modules
+  - node_modules
 notifications:
   email: false
 branches:
   except:
-    - /^v\d+\.\d+\.\d+$/
+  - "/^v\\d+\\.\\d+\\.\\d+$/"
 env:
-  - LIGHTHOUSE_API_KEY=28bb5c3a491941debf70b1471bf000ce
+  global:
+  - GH_REF: github.com/jhlagado/basic-hyper.git
+  - secure: w06wqwOyrYREpvqxsS6I9Jhn1ASSgOmtQ4dUZ6SUGG9Srbcd1v2TlECQfpXusm9D8eGw8oQiLjs2Z7AFSRKNC0sJWF6/60jMPZar5KS6nvXCw3JS4uw3aKOpjbPrWy3ZUycDI892jBqTkzU/uTf2aVQXlJ2znrRXpcZIyqOSn02Ff1CrPwG7YzRCgIOHvVHbSTtu0eT0Zi1dUB/BskxIyrB7JJjl1LAw6qmROiNCc/qcAnJP5TXiKiuc1k7Jnn0deGg9K4eqhvO0oe873M23EOpdowAnw76/fP0wHbf7Epp1zYzW0RT0VdlGI4aSyu+/vlkEcoDOt7NhVXaYMgFqTQNHFMHzJvgYV8jbJ+M5xmRZOrXLZxvxyNo+CZEYI5uwSgSOVbtdlKcWFJ2avgFR9C2VXHt1v3fTs56Xu6UU+dXTOPCX1GECKO59zIQ1dRiyyFKEEhRFQ805UZa/JhQ6sMYRXc4WMiKWybpwp19XegMwgwNedZEEoZs9x4hwEesSIjFZwiTeMzHbunA+t1eXerpLJUrQXiNJs3ma3CbLse8xlM8m7aYsgjwAG6ojVehaxVZnbgi71jl1JKdw5rU8DEaIO7ZuhqXgxEFFghbqteNnHBu2rtUQHxL+AWIP5LunPBfawBIFjDjNTa+79+XX4YuXlKB/Z6UQUAJjuKvsN3w=
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: 6e5fbbf8151ad4f47938561f39b3ad28ff1908b1  
+  github-token: 6e5fbbf8151ad4f47938561f39b3ad28ff1908b1
   keep-history: true
   on:
     branch: develop
