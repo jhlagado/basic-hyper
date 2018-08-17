@@ -3454,9 +3454,9 @@ lightercollective@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/lightercollective/-/lightercollective-0.1.0.tgz#70df102c530dcb8d0ccabfe6175a8d00d5f61300"
 
-"lighthouse-ci@git+https://github.com/ebidel/lighthouse-ci.git":
+"lighthouse-ci@https://github.com/ebidel/lighthouse-ci":
   version "0.0.2"
-  resolved "git+https://github.com/ebidel/lighthouse-ci.git#bafe19ab8c9a593dac98d9900cffea97a1327811"
+  resolved "https://github.com/ebidel/lighthouse-ci#bafe19ab8c9a593dac98d9900cffea97a1327811"
   dependencies:
     minimist "^1.2.0"
     node-fetch "^1.7.3"
