@@ -24,5 +24,6 @@ deploy:
   skip-cleanup: true
   github_token: $GITHUB_API_KEY
   keep-history: true
+  local_dir: dist
   on:
     branch: develop
