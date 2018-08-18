@@ -1,4 +1,2 @@
 
-global.HyperHTMLElement = class HyperHTMLElement {
-
-}
+global.HyperHTMLElement = require('hyperhtml-element').default;
