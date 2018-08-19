@@ -5,7 +5,7 @@ export class MyContainer extends HyperHTMLElement {
 	render() {
 		return this.html`
 			<my-header data=${this.data}></my-header>
-			<my-main data=${this.data}></my-main>
+			<todo-list data=${this.data}></todo-list>
 			<my-footer data=${this.data}></my-footer>`
 	}
 }

@@ -40,30 +40,28 @@ export const initController = (window, storage) => {
 		update();
 	}
 
-	const complete = event => {
-		const index = event.target.closest('li').dataset.index;
+	const complete = index => {
 		const todo = items[index];
 		todo.completed = !todo.completed;
 		update();
 	}
 
 	const create = event => {
-		const target = event.target;
+		const {keyCode, target} = event;
 		const value = target.value.trim();
-		if (event.keyCode === ENTER_KEY && value.length) {
+		if (keyCode === ENTER_KEY && value.length) {
 			items.push(Todo(value));
 			target.value = '';
 			update();
 		}
 	}
 
-	const destroy = event => {
-		const index = event.target.closest('li').dataset.index;
+	const destroy = index => {
 		items.splice(index, 1);
 		update();
 	}
 
-	const edit = event => {
+	const edit = (index, event) => {
 		const {type, keyCode, target} = event;
 		if (type === 'blur' || keyCode === ENTER_KEY) {
 			const value = target.value.trim();
@@ -73,7 +71,7 @@ export const initController = (window, storage) => {
 				update();
 			} else {
 				if (type === 'blur') {
-					controller.destroy(event);
+					controller.destroy(index);
 				} else {
 					target.blur();
 				}

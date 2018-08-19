@@ -1,4 +1,5 @@
 import './container';
 import './header';
-import './main';
+import './todo-list';
+import './todo-item';
 import './footer';
