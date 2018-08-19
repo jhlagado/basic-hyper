@@ -23,8 +23,7 @@ export class TodoList extends HyperHTMLElement {
 						<todo-item 
 							title=${todo.title}
 							completed=${todo.completed}
-							index=${index}
-							data=${{controller}} />`
+							index=${index} />`
 				)}</ul>
 			</section>`
 	}
