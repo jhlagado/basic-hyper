@@ -19,20 +19,16 @@
   "author": "John Hardy",
   "license": "MIT",
   "dependencies": {
+    "document-register-element": "1.11.0",
     "hyperhtml-element": "^2.1.1",
     "todomvc-app-css": "^2.0.0",
     "todomvc-common": "^1.0.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-custom-element-classes": "^0.1.0",
-    "babel-plugin-transform-es2015-classes": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "basichtml": "^0.16.1",
     "cross-env": "^5.2.0",
     "jest": "^23.4.2",
     "lighthouse-ci": "https://github.com/ebidel/lighthouse-ci",
