@@ -33,7 +33,8 @@ parcelRequire=function(e,r,n,t){var i="function"==typeof parcelRequire&&parcelRe
 						<todo-item 
 							title=${e.title}
 							completed=${e.completed}
-							index=${t} />`)}</ul>
+							index=${t} 
+							data=${this.data} />`)}</ul>
 			</section>`}}exports.TodoList=e;try{e.define("todo-list")}catch(e){}
 },{}],"m3Ro":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.TodoItem=void 0;var t=require("../controllers/todo");class e extends HyperHTMLElement{static get observedAttributes(){return["title","index","completed"]}created(){this.render()}attributeChangedCallback(t,e,i){this.render()}dblclick2Edit(t,e){const i=e.closest("li");i.classList.add("editing"),i.querySelector(".edit").focus()}blur2Save(t,e,i){i.closest("li").classList.remove("editing"),this.data.controller.edit(t,e)}edit(e,i,s){i.keyCode===t.ENTER_KEY&&s.closest("li").classList.remove("editing"),this.data.controller.edit(e,i)}escape2Reset(e,i){e.keyCode===t.ESC_KEY&&(i.value=this.data.todo.title,i.blur())}complete(t){this.data.controller.complete(t)}destroy(t){this.data.controller.destroy(t)}render(){const t=this,e=this.getAttribute("title"),i=this.getAttribute("completed"),s=this.getAttribute("index");return this.html`
@@ -81,4 +82,4 @@ parcelRequire=function(e,r,n,t){var i="function"==typeof parcelRequire&&parcelRe
 },{"./container":"g+ob","./header":"RPVM","./todo-list":"r4zs","./todo-item":"m3Ro","./footer":"qzUU"}],"vZyd":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.initApp=r;var e=require("./controllers/todo"),o=require("./models/storage");function r(){const r=HyperHTMLElement.hyper,t=(0,o.initStorage)(window.localStorage),n=(0,e.initController)(window,t),i={controller:n,hyper:r},l=r(window.document.querySelector("#todoapp"));l`<my-container data=${i}></my-container>`,n.update()}require("./elements");
 },{"./controllers/todo":"zGZQ","./models/storage":"j2cy","./elements":"sbaJ"}]},{},["vZyd"], null)
-//# sourceMappingURL=app.334f25cb.map
+//# sourceMappingURL=app.1e6673ca.map
