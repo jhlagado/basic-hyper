@@ -4,9 +4,12 @@ export class TodoItem extends HyperHTMLElement {
 
 	static get observedAttributes() { return ['title','index','completed']; }
 	
+	constructor() {
+		super();
+	}
+
 	created() {
 		this.render();
-		// this.complete1.bind(this);
 	}
 	
 	attributeChangedCallback(name, oldValue, newValue) { 
@@ -55,7 +58,6 @@ export class TodoItem extends HyperHTMLElement {
 	}
 
 	render(){
-		const element = this;
 		const title = this.getAttribute('title');
 		const completed = this.getAttribute('completed');
 
@@ -69,21 +71,16 @@ export class TodoItem extends HyperHTMLElement {
 					class="toggle"
 					type="checkbox"
 					checked="${completed}"
-					onclick="${event => this.complete(event)}">
-				<label 
-					ondblclick="${
-					event => this.dblclick2Edit(event)
-				}">${title}</label>
-				<button class="destroy" onclick="${
-					event => this.destroy(event)
-				}"></button>
+					onclick="${this.complete.bind(this)}">
+				<label ondblclick="${this.dblclick2Edit.bind(this)}">${title}</label>
+				<button class="destroy" onclick="${this.destroy.bind(this)}"></button>
 			</div>
 			<input
 				class="edit"
 				value="${title}"
-				onblur="${event => this.blur2Save(event)}"
-				onkeypress="${event => this.edit(event)}"
-				onkeydown="${event => this.escape2Reset(event)}">
+				onblur="${this.blur2Save.bind(this)}"
+				onkeypress="${this.edit.bind(this)}"
+				onkeydown="${this.escape2Reset.bind(this)}">
 		</li>`;
 	}
 }
