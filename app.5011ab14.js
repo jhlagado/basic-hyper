@@ -37,26 +37,27 @@ parcelRequire=function(e,r,n,t){var i="function"==typeof parcelRequire&&parcelRe
 							data=${this.data} />`)}</ul>
 			</section>`}}exports.TodoList=e;try{e.define("todo-list")}catch(e){}
 },{}],"m3Ro":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.TodoItem=void 0;var t=require("../controllers/todo");class e extends HyperHTMLElement{static get observedAttributes(){return["title","index","completed"]}created(){this.render()}attributeChangedCallback(t,e,i){this.render()}dblclick2Edit(t,e){const i=e.closest("li");i.classList.add("editing"),i.querySelector(".edit").focus()}blur2Save(t,e,i){i.closest("li").classList.remove("editing"),this.data.controller.edit(t,e)}edit(e,i,s){i.keyCode===t.ENTER_KEY&&s.closest("li").classList.remove("editing"),this.data.controller.edit(e,i)}escape2Reset(e,i){e.keyCode===t.ESC_KEY&&(i.value=this.data.todo.title,i.blur())}complete(t){this.data.controller.complete(t)}destroy(t){this.data.controller.destroy(t)}render(){const t=this,e=this.getAttribute("title"),i=this.getAttribute("completed"),s=this.getAttribute("index");return this.html`
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.TodoItem=void 0;var t=require("../controllers/todo");class e extends HyperHTMLElement{static get observedAttributes(){return["title","index","completed"]}created(){this.render()}attributeChangedCallback(t,e,i){this.render()}dblclick2Edit(t){const e=t.target.closest("li");e.classList.add("editing"),e.querySelector(".edit").focus()}blur2Save(t){const e=this.getAttribute("index");t.target.closest("li").classList.remove("editing"),this.data.controller.edit(e,t)}edit(e){const i=this.getAttribute("index"),s=e.target;e.keyCode===t.ENTER_KEY&&s.closest("li").classList.remove("editing"),this.data.controller.edit(i,e)}escape2Reset(e){const i=e.target;e.keyCode===t.ESC_KEY&&(i.value=this.data.todo.title,i.blur())}complete(t){const e=this.getAttribute("index");this.data.controller.complete(e)}destroy(t){const e=this.getAttribute("index");this.data.controller.destroy(e)}render(){const t=this.getAttribute("title"),e=this.getAttribute("completed");return this.html`
 		<li
-			data-index="${s}"
-			class="${i?"completed":""}"
+			data-index="${this.getAttribute("index")}"
+			class="${e?"completed":""}"
 		>
 			<div class="view">
 				<input
 					class="toggle"
 					type="checkbox"
-					checked="${i}"
-					onclick="${()=>t.complete(s)}">
-				<label ondblclick="${function(e){t.dblclick2Edit(e,this)}}">${e}</label>
-				<button class="destroy" onclick="${()=>t.destroy(s)}"></button>
+					checked="${e}"
+					onclick="${t=>this.complete(t)}">
+				<label 
+					ondblclick="${t=>this.dblclick2Edit(t)}">${t}</label>
+				<button class="destroy" onclick="${t=>this.destroy(t)}"></button>
 			</div>
 			<input
 				class="edit"
-				value="${e}"
-				onblur="${function(e){t.blur2Save(s,e,this)}}"
-				onkeypress="${function(e){t.edit(s,e,this)}}"
-				onkeydown="${function(e){t.escape2Reset(e,this)}}">
+				value="${t}"
+				onblur="${t=>this.blur2Save(t)}"
+				onkeypress="${t=>this.edit(t)}"
+				onkeydown="${t=>this.escape2Reset(t)}">
 		</li>`}}exports.TodoItem=e;try{e.define("todo-item")}catch(t){}
 },{"../controllers/todo":"zGZQ"}],"qzUU":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0});const e=exports.selectIfMatch=((e,t)=>e===t?"selected":""),t=exports.showIfSomeTodos=(e=>e>0?"":"display: none"),s=exports.pluralize=(e=>e>=2?"s":""),o=exports.showIfSomeComplete=((e,t)=>e<t?"":"display: none");class l extends HyperHTMLElement{created(){this.render(),this.data.controller.subscribe(()=>this.render())}render(){const l=this.data.controller,r=l.todosSize(),a=l.todosLeft(),c=l.hash();return this.html`
@@ -82,4 +83,4 @@ parcelRequire=function(e,r,n,t){var i="function"==typeof parcelRequire&&parcelRe
 },{"./container":"g+ob","./header":"RPVM","./todo-list":"r4zs","./todo-item":"m3Ro","./footer":"qzUU"}],"vZyd":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.initApp=r;var e=require("./controllers/todo"),o=require("./models/storage");function r(){const r=HyperHTMLElement.hyper,t=(0,o.initStorage)(window.localStorage),n=(0,e.initController)(window,t),i={controller:n,hyper:r},l=r(window.document.querySelector("#todoapp"));l`<my-container data=${i}></my-container>`,n.update()}require("./elements");
 },{"./controllers/todo":"zGZQ","./models/storage":"j2cy","./elements":"sbaJ"}]},{},["vZyd"], null)
-//# sourceMappingURL=app.1e6673ca.map
+//# sourceMappingURL=app.5011ab14.map
